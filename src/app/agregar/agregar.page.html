@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{edit? 'Editar':'Agregar'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()" [strong]="true"><ion-icon name="close-outline"
+          size="large"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" [formGroup]="registrarForm">
+  <ion-item>
+    <ion-input type="text" labelPlacement="stacked" label="Nombres" formControlName="nombres" placeholder="Juan"></ion-input>
+  </ion-item>
+  <ion-item style="display: flex; flex-direction: column;">
+      <ion-label>
+        Sexo
+      </ion-label>
+      <br>
+    <ion-radio-group formControlName="sexo" style="display: flex; justify-content: space-around;">
+      <ion-radio value="M">Masculino</ion-radio>&nbsp;
+      <ion-radio value="F">Femenino</ion-radio>
+    </ion-radio-group>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" labelPlacement="stacked" label="Edad" formControlName="edad" placeholder="18"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" labelPlacement="stacked" label="Direccion" formControlName="direccion" placeholder="Tu casa"></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-button size="default" slot="end" [disabled]="!registrarForm.valid" (click)="save()">
+      <ion-icon slot="start" name="paper-plane-outline"></ion-icon>
+      {{edit? 'Editar':'Agregar'}}
+    </ion-button>
+  </ion-item>
+</ion-content>

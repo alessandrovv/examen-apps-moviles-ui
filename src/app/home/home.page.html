@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Listado de Alumnos</ion-title>
+    <ion-buttons slot="primary" (click)="agregar()">
+      <ion-button color="tertiary" fill="outline">
+        Nuevo Registro
+        <ion-icon slot="end" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-list>
+      <ion-item-sliding *ngFor="let alumno of alumnos">
+        <ion-item>
+          <ion-label>
+            <h3 class="title">{{ alumno.nombres }}</h3>
+            <p class="subtext">
+              {{'Sexo : ' + alumno.sexo + ' - Dirección : '
+              + alumno.direccion + ' - Edad : ' + alumno.edad}}
+            </p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-button color="success" (click)="agregar(alumno.id)">
+            <ion-icon name="create"></ion-icon>
+            Editar
+          </ion-button>
+          <ion-button color="danger" (click)="delete(alumno.id)">
+            <ion-icon name="trash"></ion-icon>
+            Eliminar
+          </ion-button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+</ion-content>
